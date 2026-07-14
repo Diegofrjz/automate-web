@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="./support.js"></script>
+</head>
+
+<body>
+  <x-dc>
+    <helmet>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+      <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet">
+      <style>
+        * {
+          box-sizing: border-box;
+        }
+
+        html {
+          scroll-behavior: smooth;
+        }
+
+        body {
+          margin: 0;
+        }
+
+        ::selection {
+          background: #ddd6f9;
+        }
+
+        input,
+        textarea,
+        button {
+          font-family: inherit;
+        }
+
+        input:focus,
+        textarea:focus {
+          outline: none;
+          border-color: #6D5BD0 !important;
+          box-shadow: 0 0 0 3px rgba(109, 91, 208, 0.12);
+        }
+
+        input[type=range] {
+          -webkit-appearance: none;
+          appearance: none;
+          height: 4px;
+          border-radius: 4px;
+          background: #E3DFF4;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 22px;
+          height: 22px;
+          border-radius: 50%;
+          background: #6D5BD0;
+          border: 3px solid #fff;
+          box-shadow: 0 1px 6px rgba(109, 91, 208, 0.45);
+          cursor: pointer;
+        }
+
+        input[type=range]::-moz-range-thumb {
+          width: 22px;
+          height: 22px;
+          border-radius: 50%;
+          background: #6D5BD0;
+          border: 3px solid #fff;
+          box-shadow: 0 1px 6px rgba(109, 91, 208, 0.45);
+          cursor: pointer;
+        }
+
+        #nosotros image-slot {
+          display: block !important;
+          width: 100% !important;
+          height: 100% !important;
+        }
+
+        @keyframes au-shimmer {
+          0% {
+            background-position: 0% 50%;
+          }
+
+          100% {
+            background-position: 200% 50%;
+          }
+        }
+
+        .au-ai-text {
+          background-image: linear-gradient(90deg, #22D3EE, #3B82F6, #8B5CF6, #EC4899, #F59E0B, #EC4899, #8B5CF6, #3B82F6, #22D3EE);
+          background-size: 200% auto;
+          background-repeat: repeat;
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          color: transparent;
+          animation: au-shimmer 7s linear infinite;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .au-ai-text {
+            animation: none;
+            background-position: 0% 50%;
+          }
+        }
+
+        @media (max-width: 860px) {
+          .au-nav {
+            display: none !important;
+          }
+
+          .au-grid3 {
+            grid-template-columns: 1fr !important;
+          }
+
+          .au-calc {
+            grid-template-columns: 1fr !important;
+          }
+
+          .au-contact {
+            grid-template-columns: 1fr !important;
+          }
+
+          .au-hero-logo {
+            width: 230px !important;
+          }
+
+          .au-h1 {
+            font-size: 30px !important;
+          }
+        }
+      </style>
+    </helmet>
+
+    <div
+      style="font-family:'Manrope',system-ui,sans-serif; color:#1A1726; background:#ffffff; -webkit-font-smoothing:antialiased; line-height:1.5;">
+
+      <!-- HEADER -->
+      <header
+        style="position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.85); backdrop-filter:blur(12px); border-bottom:1px solid #EFEDF6;">
+        <div
+          style="max-width:1160px; margin:0 auto; padding:14px 28px; display:flex; align-items:center; justify-content:space-between;">
+          <button onClick="{{ goTop }}"
+            style="display:flex; align-items:center; gap:11px; background:none; border:none; cursor:pointer; padding:0;">
+            <img src="uploads/Nuevo%20Logo%20Automate%20Transparente.png" alt="Automate"
+              style="width:38px; height:38px; object-fit:contain;">
+            <span style="font-size: 18px; font-weight: 800; letter-spacing: 0.18em; color: #6d5bd0">AUTOMATE</span>
+          </button>
+          <nav class="au-nav" style="display:flex; align-items:center; gap:8px;">
+            <button onClick="{{ goServicios }}"
+              style="background:none; border:none; cursor:pointer; font-size:15px; font-weight:600; color:#5B5870; padding:9px 16px; border-radius:8px; transition:color .2s, background .2s;"
+              style-hover="background:#F5F3FB; color:#1A1726;">Servicios</button>
+            <button onClick="{{ goCotizacion }}"
+              style="background:none; border:none; cursor:pointer; font-size:15px; font-weight:600; color:#5B5870; padding:9px 16px; border-radius:8px; transition:color .2s, background .2s;"
+              style-hover="background:#F5F3FB; color:#1A1726;">Ahorro</button>
+            <button onClick="{{ goNosotros }}"
+              style="background:none; border:none; cursor:pointer; font-size:15px; font-weight:600; color:#5B5870; padding:9px 16px; border-radius:8px; transition:color .2s, background .2s;"
+              style-hover="background:#F5F3FB; color:#1A1726;">Nosotros</button>
+            <button onClick="{{ goClientes }}"
+              style="background:none; border:none; cursor:pointer; font-size:15px; font-weight:600; color:#5B5870; padding:9px 16px; border-radius:8px; transition:color .2s, background .2s;"
+              style-hover="background:#F5F3FB; color:#1A1726;">Clientes</button>
+            <button onClick="{{ goContacto }}"
+              style="background:#6D5BD0; border:none; cursor:pointer; font-size:15px; font-weight:700; color:#ffffff; padding:9px 20px; border-radius:8px; transition:background .2s;"
+              style-hover="background:#5B49BE;">Contacto</button>
+          </nav>
+        </div>
+      </header>
+
+      <!-- HERO -->
+      <section
+        style="position:relative; overflow:hidden; background:linear-gradient(180deg,#ffffff 0%,#F8F6FE 55%,#ffffff 100%);">
+        <div
+          style="position:absolute; top:-120px; left:50%; transform:translateX(-50%); width:760px; height:620px; background:radial-gradient(ellipse at center, rgba(141,127,212,0.20) 0%, rgba(237,234,251,0.10) 45%, rgba(255,255,255,0) 70%); pointer-events:none;">
+        </div>
+        <div
+          style="position:relative; max-width:1160px; margin:0 auto; padding:74px 28px 86px; display:flex; flex-direction:column; align-items:center; text-align:center;">
+          <img class="au-hero-logo" src="./nuevo-logo-automate-transparente-v2-mqucsaen.png" alt="Automate"
+            style="width:410px; height:410px; object-fit:contain; filter:drop-shadow(0 18px 40px rgba(109,91,208,0.18));">
+          <h1 class="au-h1"
+            style="margin:26px 0 0; font-size:46px; font-weight:800; line-height:1.12; letter-spacing:-0.01em;">
+            <span class="au-ai-text" style="display:block;">Automation Anywhere</span>
+            <span class="au-ai-text" style="display:block;">Data Everywhere</span>
+          </h1>
+          <p style="margin:22px 0 0; max-width:560px; font-size:17px; color:#5B5870; line-height:1.6;">Consultora de
+            automatización e inteligencia de negocio. Convertimos procesos y datos en decisiones rápidas y rentables.
+          </p>
+          <div style="margin-top:34px; display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
+            <button onClick="{{ goCotizacion }}"
+              style="background:#6D5BD0; border:none; cursor:pointer; font-size:16px; font-weight:700; color:#fff; padding:15px 30px; border-radius:10px; box-shadow:0 8px 24px rgba(109,91,208,0.28); transition:transform .2s, box-shadow .2s, background .2s;"
+              style-hover="background:#5B49BE; transform:translateY(-2px); box-shadow:0 12px 30px rgba(109,91,208,0.34);">Calcula
+              tu ahorro</button>
+            <button onClick="{{ goServicios }}"
+              style="background:#fff; border:1px solid #E1DCF2; cursor:pointer; font-size:16px; font-weight:700; color:#1A1726; padding:15px 28px; border-radius:10px; transition:background .2s, border-color .2s;"
+              style-hover="background:#F7F5FD; border-color:#CFC7EC;">Ver servicios</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIDEO PROMOCIONAL -->
+      <section id="video" data-reveal="" style="{{ revealVideo }}">
+        <div style="text-align:center; max-width:640px; margin:0 auto 40px;">
+          <div style="font-size:13px; font-weight:700; letter-spacing:0.16em; color:#8B7FD4; text-transform:uppercase;">
+            Conócenos</div>
+          <h2 style="margin:14px 0 0; font-size:34px; font-weight:800; letter-spacing:-0.02em;">Nuestro video
+            promocional</h2>
+        </div>
+        <div
+          style="max-width:920px; margin:0 auto; border-radius:22px; overflow:hidden; box-shadow:0 24px 60px rgba(109,91,208,0.22); border:1px solid #ECEAF5; background:#000;">
+          <div style="position:relative; width:100%; aspect-ratio:16/9;">
+            <iframe src="https://www.youtube.com/embed/C9HZx7IlgMk" title="Video promocional Automate"
+              style="position:absolute; inset:0; width:100%; height:100%; border:none;"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen=""></iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICIOS -->
+      <section id="servicios" data-reveal="" style="{{ revealServicios }}">
+        <div style="text-align:center; max-width:640px; margin:0 auto 56px;">
+          <div style="font-size:13px; font-weight:700; letter-spacing:0.16em; color:#8B7FD4; text-transform:uppercase;">
+            Servicios</div>
+          <h2 style="margin:14px 0 0; font-size:36px; font-weight:800; letter-spacing:-0.02em;">Tres palancas para
+            escalar tu negocio</h2>
+          <p style="margin:16px 0 0; font-size:17px; color:#5B5870;">Soluciones a medida, implementadas con criterio y
+            enfoque en resultados.</p>
+        </div>
+        <div class="au-grid3" style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+
+          <button onClick="{{ goCotizacion }}"
+            style="text-align:left; background:#fff; border:1px solid #ECEAF5; border-radius:18px; padding:34px 30px; cursor:pointer; display:flex; flex-direction:column; transition:transform .25s, box-shadow .25s, border-color .25s;"
+            style-hover="transform:translateY(-4px); box-shadow:0 18px 40px rgba(26,23,38,0.08); border-color:#DfD9F1;">
+            <div
+              style="width:54px; height:54px; border-radius:14px; background:#EDEAFB; display:flex; align-items:center; justify-content:center; margin-bottom:22px;">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#6D5BD0" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12a9 9 0 1 1-3-6.7"></path>
+                <polyline points="21 3 21 8 16 8"></polyline>
+              </svg>
+            </div>
+            <h3 style="margin:0; font-size:21px; font-weight:700; min-height:29px;">Automatización</h3>
+            <p style="margin:12px 0 0; font-size:15px; color:#5B5870; line-height:1.6; flex:1;">Automatizamos procesos
+              de todo tipo con RPA e integraciones avanzadas con Inteligencia Artificial,&nbsp;para que tu equipo solo
+              se enfoque en lo que importa.</p>
+            <span style="font-size:14px; font-weight:700; color:#6D5BD0; margin-top:18px;">Cotizar →</span>
+          </button>
+
+          <button onClick="{{ goContacto }}"
+            style="text-align:left; background:#fff; border:1px solid #ECEAF5; border-radius:18px; padding:34px 30px; cursor:pointer; display:flex; flex-direction:column; transition:transform .25s, box-shadow .25s, border-color .25s;"
+            style-hover="transform:translateY(-4px); box-shadow:0 18px 40px rgba(26,23,38,0.08); border-color:#DfD9F1;">
+            <div
+              style="width:54px; height:54px; border-radius:14px; background:#EDEAFB; display:flex; align-items:center; justify-content:center; margin-bottom:22px;">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#6D5BD0" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M21 11.5a8.38 8.38 0 0 1-9 8.4 9 9 0 0 1-4-1L3 20l1.1-4.9a8.5 8.5 0 0 1-1-4A8.38 8.38 0 0 1 11.5 3 8.5 8.5 0 0 1 21 11.5z">
+                </path>
+              </svg>
+            </div>
+            <h3 style="margin:0; font-size:21px; font-weight:700; min-height:29px;">Consultoría</h3>
+            <p style="margin:12px 0 0; font-size:15px; color:#5B5870; line-height:1.6; flex:1;">Le brindamos a tu
+              empresa diagnósticos, estrategias y roadmaps. Acompañandote en la transformación hacia el futuro.</p>
+            <span style="font-size:14px; font-weight:700; color:#6D5BD0; margin-top:18px;">Conversemos →</span>
+          </button>
+
+          <button onClick="{{ goCotizacion }}"
+            style="text-align:left; background:#fff; border:1px solid #ECEAF5; border-radius:18px; padding:34px 30px; cursor:pointer; display:flex; flex-direction:column; transition:transform .25s, box-shadow .25s, border-color .25s;"
+            style-hover="transform:translateY(-4px); box-shadow:0 18px 40px rgba(26,23,38,0.08); border-color:#DfD9F1;">
+            <div
+              style="width:54px; height:54px; border-radius:14px; background:#EDEAFB; display:flex; align-items:center; justify-content:center; margin-bottom:22px;">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#6D5BD0" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="21" x2="21" y2="21"></line>
+                <rect x="5" y="11" width="3.4" height="7"></rect>
+                <rect x="10.3" y="6" width="3.4" height="12"></rect>
+                <rect x="15.6" y="13" width="3.4" height="5"></rect>
+              </svg>
+            </div>
+            <h3 style="margin:0; font-size:21px; font-weight:700; min-height:29px;">Inteligencia de Negocio</h3>
+            <p style="margin:12px 0 0; font-size:15px; color:#5B5870; line-height:1.6; flex:1;">Te diseñamos dashboards
+              y modelos de datos que transforman información dispersa en decisiones claras y oportunas.</p>
+            <span style="font-size:14px; font-weight:700; color:#6D5BD0; margin-top:18px;">Cotizar →</span>
+          </button>
+
+        </div>
+      </section>
+
+      <!-- CALCULADORA -->
+      <section id="cotizacion" data-reveal="" style="{{ revealCotizacion }}">
+        <div style="max-width:1160px; margin:0 auto; padding:96px 28px;">
+          <div style="text-align:center; max-width:640px; margin:0 auto 52px;">
+            <div
+              style="font-size:13px; font-weight:700; letter-spacing:0.16em; color:#8B7FD4; text-transform:uppercase;">
+              Calculadora de Ahorro</div>
+            <h2 style="margin:14px 0 0; font-size:36px; font-weight:800; letter-spacing:-0.02em;">¿Cuánto dinero está
+              perdiendo tu empresa en tareas manuales?</h2>
+            <p style="margin:16px 0 0; font-size:17px; color:#5B5870;">Mueve las barras y descubre el impacto al
+              instante.</p>
+          </div>
+
+          <div class="au-calc" style="display:grid; grid-template-columns:1.15fr 1fr; gap:28px; align-items:stretch;">
+
+            <!-- Controls -->
+            <div style="background:#fff; border:1px solid #ECEAF5; border-radius:20px; padding:36px;">
+              <!-- Tamaño del equipo -->
+              <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:6px;">
+                <span style="font-size:14px; font-weight:700; color:#1A1726;">Tamaño del equipo</span>
+                <span style="font-size:22px; font-weight:800; color:#6D5BD0;">{{ equipo }}</span>
+              </div>
+              <p style="margin:0 0 12px; font-size:13px; color:#9A96AD;">¿Cuántas personas realizan reportes, llenado de
+                datos o tareas repetitivas?</p>
+              <input type="range" min="1" max="50" step="1" value="{{ equipo }}" onChange="{{ onEquipo }}"
+                style="width:100%;">
+              <div
+                style="display:flex; justify-content:space-between; margin-top:8px; margin-bottom:30px; font-size:12px; color:#9A96AD;">
+                <span>1 persona</span><span>50 personas</span>
+              </div>
+
+              <!-- Tiempo invertido -->
+              <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:6px;">
+                <span style="font-size:14px; font-weight:700; color:#1A1726;">Tiempo invertido</span>
+                <span style="font-size:22px; font-weight:800; color:#6D5BD0;">{{ horasSemana }} h</span>
+              </div>
+              <p style="margin:0 0 12px; font-size:13px; color:#9A96AD;">¿Cuántas horas a la semana dedican a estas
+                tareas?</p>
+              <input type="range" min="1" max="48" step="1" value="{{ horasSemana }}" onChange="{{ onHorasSemana }}"
+                style="width:100%;">
+              <div
+                style="display:flex; justify-content:space-between; margin-top:8px; margin-bottom:30px; font-size:12px; color:#9A96AD;">
+                <span>1 h/semana</span><span>48 h/semana</span>
+              </div>
+
+              <!-- Costo laboral -->
+              <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:6px;">
+                <span style="font-size:14px; font-weight:700; color:#1A1726;">Costo laboral promedio</span>
+                <span style="display:flex; align-items:baseline; gap:8px;">
+                  <span style="font-size:22px; font-weight:800; color:#6D5BD0;">{{ monedaSymbol }} {{ costoMensualText
+                    }}</span>
+                  <button onClick="{{ toggleMoneda }}"
+                    style="background:#EDEAFB; border:1px solid #DfD9F1; cursor:pointer; font-size:11px; font-weight:700; color:#6D5BD0; padding:5px 11px; border-radius:999px; transition:background .2s;"
+                    style-hover="background:#E1DCF5;">{{ monedaToggleLabel }}</button>
+                </span>
+              </div>
+              <p style="margin:0 0 12px; font-size:13px; color:#9A96AD;">¿Cuál es el salario mensual promedio de este
+                equipo, por persona?</p>
+              <input type="range" min="{{ costoMin }}" max="{{ costoMax }}" step="{{ costoStep }}"
+                value="{{ costoMensual }}" onChange="{{ onCostoMensual }}" style="width:100%;">
+              <div style="display:flex; justify-content:space-between; margin-top:8px; font-size:12px; color:#9A96AD;">
+                <span>{{ monedaSymbol }} {{ costoMinText }}</span><span>{{ monedaSymbol }} {{ costoMaxText }}</span>
+              </div>
+            </div>
+
+            <!-- Result -->
+            <div
+              style="background:linear-gradient(160deg,#6D5BD0 0%,#8B7FD4 100%); border-radius:20px; padding:40px 36px; display:flex; flex-direction:column; justify-content:center; color:#fff; box-shadow:0 20px 50px rgba(109,91,208,0.30);">
+              <div style="font-size:13px; font-weight:600; letter-spacing:0.04em; opacity:0.85;">Dinero que gastas al
+                año</div>
+              <div style="margin:10px 0 22px; font-size:44px; font-weight:800; letter-spacing:-0.02em; line-height:1;">
+                {{ perdidaAnoText }}</div>
+
+              <div style="height:1px; background:rgba(255,255,255,0.22); margin-bottom:22px;"></div>
+
+              <div style="font-size:13px; font-weight:600; letter-spacing:0.04em; opacity:0.85;">Lo que puedes ahorrar
+                con Automate</div>
+              <div
+                style="margin:10px 0 6px; font-size:52px; font-weight:800; letter-spacing:-0.02em; line-height:1; color:#B9FFCE;">
+                {{ ahorroAnoText }}</div>
+              <div style="font-size:14px; font-weight:600; opacity:0.82;">Proyección de ahorro del 70% al año</div>
+
+              <div style="background:rgba(255,255,255,0.14); border-radius:14px; padding:18px 20px; margin-top:24px;">
+                <p style="margin:0; font-size:14px; line-height:1.6;">Con esta automatización, recuperarías <strong>{{
+                    horasRecuperadasMesText }} horas al mes</strong>. Es el equivalente a tener <strong>{{
+                    empleadosEquivalentesText }}</strong> dedicados solo a innovación y crecimiento.</p>
+              </div>
+
+              <button onClick="{{ goContacto }}"
+                style="margin-top:24px; background:#fff; border:none; cursor:pointer; font-size:15px; font-weight:800; color:#6D5BD0; padding:15px; border-radius:10px; transition:transform .2s, box-shadow .2s;"
+                style-hover="transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,0.18);">Quiero dejar de
+                perder este dinero</button>
+
+              <p style="margin:18px 0 0; font-size:12px; line-height:1.5; opacity:0.7;">Estimación referencial. El
+                ahorro real se confirma en una reunión de diagnóstico.</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- NOSOTROS -->
+      <section id="nosotros" data-reveal="" style="{{ revealNosotros }}">
+        <div style="max-width:1160px; margin:0 auto; padding:96px 28px;">
+          <div style="text-align:center; max-width:640px; margin:0 auto 56px;">
+            <div
+              style="font-size:13px; font-weight:700; letter-spacing:0.16em; color:#8B7FD4; text-transform:uppercase;">
+              Nosotros</div>
+            <h2 style="margin:14px 0 0; font-size:36px; font-weight:800; letter-spacing:-0.02em;">Quiénes están detrás
+              de Automate</h2>
+            <p style="margin:16px 0 0; font-size:17px; color:#5B5870;">Un equipo que combina ingeniería, negocio y datos
+              para impulsar tu empresa.</p>
+          </div>
+
+          <div style="display:flex; gap:36px; justify-content:center; flex-wrap:wrap;">
+
+            <!-- Founder 1 -->
+            <div style="width:330px; max-width:100%; display:flex; flex-direction:column;">
+              <div
+                style="position:relative; width:100%; aspect-ratio:9/16; border-radius:22px; overflow:hidden; background:#EDEAFB; box-shadow:0 20px 50px rgba(26,23,38,0.10);">
+                <img src="./founder-diegofranco.webp" alt="Diego Franco Jiménez Zagaceta"
+                  style="width:100%; height:100%; object-fit:cover; display:block;">
+              </div>
+              <div style="padding:22px 6px 0; text-align:center;">
+                <div style="font-size:20px; font-weight:800; color:#1A1726;">Diegofranco Jiménez Zagaceta</div>
+                <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin:8px 0 14px;">
+                  <span
+                    style="font-size:12px; font-weight:700; letter-spacing:0.12em; color:#6D5BD0; background:#EDEAFB; padding:5px 12px; border-radius:999px;">CEO</span>
+                  <a href="https://www.linkedin.com/in/diegofranco-jimenez-zagaceta/" target="_blank"
+                    rel="noopener noreferrer" aria-label="LinkedIn de Diegofranco Jiménez"
+                    style="width:26px; height:26px; border-radius:50%; background:#EDEAFB; display:flex; align-items:center; justify-content:center; transition:background .2s;"
+                    style-hover="background:#DDD5F7;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#6D5BD0">
+                      <path
+                        d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.95v5.66H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.25 2.36 4.25 5.44v6.3zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z">
+                      </path>
+                    </svg>
+                  </a>
+                </div>
+                <p style="margin:0; font-size:14px; color:#5B5870; line-height:1.6;">Ingeniero Industrial y de
+                  Sistemas.<br>Con experiencia en empresas del rubro banca, seguros y entretenimiento, especializado en
+                  análisis de negocio, automatización de procesos e integración de IA.</p>
+              </div>
+            </div>
+
+            <!-- Founder 2 -->
+            <div style="width:330px; max-width:100%; display:flex; flex-direction:column;">
+              <div
+                style="position:relative; width:100%; aspect-ratio:9/16; border-radius:22px; overflow:hidden; background:#EDEAFB; box-shadow:0 20px 50px rgba(26,23,38,0.10);">
+                <img src="./founder-diegocaceres.webp" alt="Diego Cáceres Balbuena"
+                  style="width:100%; height:100%; object-fit:cover; display:block;">
+              </div>
+              <div style="padding:22px 6px 0; text-align:center;">
+                <div style="font-size:20px; font-weight:800; color:#1A1726;">Diego Cáceres Balbuena</div>
+                <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin:8px 0 14px;">
+                  <span
+                    style="font-size:12px; font-weight:700; letter-spacing:0.12em; color:#6D5BD0; background:#EDEAFB; padding:5px 12px; border-radius:999px;">CFO</span>
+                  <a href="https://www.linkedin.com/in/diego-caceres-balbuena/" target="_blank"
+                    rel="noopener noreferrer" aria-label="LinkedIn de Diego Cáceres"
+                    style="width:26px; height:26px; border-radius:50%; background:#EDEAFB; display:flex; align-items:center; justify-content:center; transition:background .2s;"
+                    style-hover="background:#DDD5F7;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#6D5BD0">
+                      <path
+                        d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.95v5.66H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.25 2.36 4.25 5.44v6.3zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z">
+                      </path>
+                    </svg>
+                  </a>
+                </div>
+                <p style="margin:0; font-size:14px; color:#5B5870; line-height:1.6;">Ingeniero Industrial y de
+                  Sistemas.<br>Con experiencia en empresas del rubro de telecomunicaciones y seguros, especializado en
+                  planeamiento financiero y diseño de estrategias comerciales.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- CLIENTES -->
+      <section id="clientes" data-reveal="" style="{{ revealClientes }}">
+        <div style="text-align:center; max-width:640px; margin:0 auto 52px;">
+          <div style="font-size:13px; font-weight:700; letter-spacing:0.16em; color:#8B7FD4; text-transform:uppercase;">
+            Clientes</div>
+          <h2 style="margin:14px 0 0; font-size:36px; font-weight:800; letter-spacing:-0.02em;">Empresas que confían en
+            Automate</h2>
+          <p style="margin:16px 0 0; font-size:17px; color:#5B5870;">Resultados reales contados por quienes los
+            vivieron.</p>
+        </div>
+
+        <div style="position:relative; max-width:820px; margin:0 auto;">
+          <div
+            style="position:relative; background:#fff; border:1px solid #ECEAF5; border-radius:22px; padding:52px 64px; min-height:280px; box-shadow:0 20px 50px rgba(26,23,38,0.07); overflow:hidden;">
+
+            <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="1">
+              <div style="{{ t.wrapStyle }}">
+                <svg width="34" height="26" viewBox="0 0 34 26" fill="none" style="margin-bottom:18px;">
+                  <path
+                    d="M14.5 0C7 3 2 9.5 2 16.5 2 21.5 5.5 25 10 25c4 0 7-3 7-7.2 0-3.8-2.6-6.6-6-6.6-.6 0-1.1.1-1.6.2C10.5 7 13 3.3 17 1.2L14.5 0zm18 0C25 3 20 9.5 20 16.5c0 5 3.5 8.5 8 8.5 4 0 7-3 7-7.2 0-3.8-2.6-6.6-6-6.6-.6 0-1.1.1-1.6.2C28.5 7 31 3.3 35 1.2L32.5 0z"
+                    fill="#EDEAFB"></path>
+                </svg>
+                <p style="margin:0; min-height:92px; font-size:19px; line-height:1.6; color:#1A1726; font-weight:500;">
+                  {{ t.quote }}</p>
+                <div
+                  style="display:flex; align-items:center; gap:14px; margin-top:28px; position:absolute; left:0; right:0; bottom:0;">
+                  <div
+                    style="width:48px; height:48px; border-radius:50%; background:{{ t.avatarBg }}; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:800; color:#6D5BD0; flex:none;">
+                    {{ t.initials }}</div>
+                  <div>
+                    <div style="font-size:15px; font-weight:700; color:#1A1726;">{{ t.name }}</div>
+                    <div style="font-size:13px; color:#9A96AD;">{{ t.role }}</div>
+                  </div>
+                </div>
+              </div>
+            </sc-for>
+
+            <button onClick="{{ prevTestimonial }}" aria-label="Anterior"
+              style="position:absolute; top:50%; left:16px; transform:translateY(-50%); width:38px; height:38px; border-radius:50%; background:#F7F6FB; border:1px solid #ECEAF5; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .2s;"
+              style-hover="background:#EDEAFB;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6D5BD0" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button onClick="{{ nextTestimonial }}" aria-label="Siguiente"
+              style="position:absolute; top:50%; right:16px; transform:translateY(-50%); width:38px; height:38px; border-radius:50%; background:#F7F6FB; border:1px solid #ECEAF5; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .2s;"
+              style-hover="background:#EDEAFB;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6D5BD0" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+
+          <div style="display:flex; justify-content:center; gap:9px; margin-top:26px;">
+            <sc-for list="{{ dots }}" as="d" hint-placeholder-count="5">
+              <button onClick="{{ d.onClick }}" aria-label="Ir al testimonio" style="{{ d.style }}"></button>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACTO -->
+      <section id="contacto" data-reveal="" style="{{ revealContacto }}">
+        <div style="text-align:center; max-width:640px; margin:0 auto 52px;">
+          <div style="font-size:13px; font-weight:700; letter-spacing:0.16em; color:#8B7FD4; text-transform:uppercase;">
+            Contacto</div>
+          <h2 style="margin:14px 0 0; font-size:36px; font-weight:800; letter-spacing:-0.02em;">Conversemos sobre tu
+            proyecto</h2>
+          <p style="margin:16px 0 0; font-size:17px; color:#5B5870;">Cuéntanos qué quieres lograr y te responderemos de
+            inmediato.</p>
+        </div>
+
+        <div class="au-contact" style="display:grid; grid-template-columns:1.4fr 1fr; gap:40px; align-items:start;">
+          <!-- Form -->
+          <form onSubmit="{{ onSubmit }}"
+            style="background:#fff; border:1px solid #ECEAF5; border-radius:20px; padding:36px;">
+            <div style="display:flex; flex-direction:column; gap:18px;">
+              <div>
+                <label style="display:block; font-size:14px; font-weight:700; margin-bottom:8px;">Nombre</label>
+                <input type="text" required="" placeholder="Tu nombre"
+                  style="width:100%; padding:13px 15px; border:1px solid #E3DFF0; border-radius:10px; font-size:15px; color:#1A1726; background:#FCFBFE; transition:border-color .2s, box-shadow .2s;">
+              </div>
+              <div>
+                <label style="display:block; font-size:14px; font-weight:700; margin-bottom:8px;">Email</label>
+                <input type="email" required="" placeholder="tu@empresa.com"
+                  style="width:100%; padding:13px 15px; border:1px solid #E3DFF0; border-radius:10px; font-size:15px; color:#1A1726; background:#FCFBFE; transition:border-color .2s, box-shadow .2s;">
+              </div>
+              <div>
+                <label style="display:block; font-size:14px; font-weight:700; margin-bottom:8px;">Mensaje</label>
+                <textarea required="" rows="4" placeholder="Cuéntanos sobre tu proyecto..."
+                  style="width:100%; padding:13px 15px; border:1px solid #E3DFF0; border-radius:10px; font-size:15px; color:#1A1726; background:#FCFBFE; resize:vertical; transition:border-color .2s, box-shadow .2s;"></textarea>
+              </div>
+              <button type="submit"
+                style="background:#6D5BD0; border:none; cursor:pointer; font-size:16px; font-weight:700; color:#fff; padding:15px; border-radius:10px; transition:background .2s, transform .2s;"
+                style-hover="background:#5B49BE; transform:translateY(-2px);">{{ submitLabel }}</button>
+            </div>
+          </form>
+
+          <!-- Contact info -->
+          <div style="display:flex; flex-direction:column; gap:18px;">
+            <div style="background:#F7F6FB; border:1px solid #ECEAF5; border-radius:16px; padding:24px;">
+              <div style="display:flex; align-items:center; gap:14px;">
+                <div
+                  style="width:46px; height:46px; border-radius:12px; background:#EDEAFB; display:flex; align-items:center; justify-content:center; flex:none;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6D5BD0" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                    <polyline points="3 7 12 13 21 7"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <div style="font-size:13px; color:#9A96AD; font-weight:600;">Email</div>
+                  <div style="font-size:16px; font-weight:700; color:#1A1726;">automateperu@gmail.com</div>
+                </div>
+              </div>
+            </div>
+            <div style="background:#F7F6FB; border:1px solid #ECEAF5; border-radius:16px; padding:24px;">
+              <div style="display:flex; align-items:center; gap:14px;">
+                <div
+                  style="width:46px; height:46px; border-radius:12px; background:#EDEAFB; display:flex; align-items:center; justify-content:center; flex:none;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6D5BD0" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z">
+                    </path>
+                  </svg>
+                </div>
+                <div>
+                  <div style="font-size:13px; color:#9A96AD; font-weight:600;">WhatsApp</div>
+                  <div style="font-size:16px; font-weight:700; color:#1A1726;">+51 904 786 070</div>
+                </div>
+              </div>
+            </div>
+            <div
+              style="background:linear-gradient(160deg,#1A1726 0%,#2D2747 100%); border-radius:16px; padding:24px; color:#fff;">
+              <div style="font-size:15px; font-weight:700; margin-bottom:6px;">Horario de atención</div>
+              <div style="font-size:14px; opacity:0.8; line-height:1.6;">Lunes a viernes<br>9:00 — 18:00 (GMT-5)</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer style="background:#1A1726; color:#C7C3D6;">
+        <div
+          style="max-width:1160px; margin:0 auto; padding:42px 28px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px;">
+          <div style="display:flex; align-items:center; gap:11px;">
+            <img src="uploads/Nuevo%20Logo%20Automate%20Transparente.png" alt="Automate"
+              style="width:34px; height:34px; object-fit:contain;">
+            <span style="font-size:16px; font-weight:800; letter-spacing:0.18em; color:#fff;">AUTOMATE</span>
+          </div>
+          <nav style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button onClick="{{ goServicios }}"
+              style="background:none; border:none; cursor:pointer; font-size:14px; font-weight:600; color:#C7C3D6; padding:6px 12px; transition:color .2s;"
+              style-hover="color:#fff;">Servicios</button>
+            <button onClick="{{ goCotizacion }}"
+              style="background:none; border:none; cursor:pointer; font-size:14px; font-weight:600; color:#C7C3D6; padding:6px 12px; transition:color .2s;"
+              style-hover="color:#fff;">Ahorro</button>
+            <button onClick="{{ goNosotros }}"
+              style="background:none; border:none; cursor:pointer; font-size:14px; font-weight:600; color:#C7C3D6; padding:6px 12px; transition:color .2s;"
+              style-hover="color:#fff;">Nosotros</button>
+            <button onClick="{{ goClientes }}"
+              style="background:none; border:none; cursor:pointer; font-size:14px; font-weight:600; color:#C7C3D6; padding:6px 12px; transition:color .2s;"
+              style-hover="color:#fff;">Clientes</button>
+            <button onClick="{{ goContacto }}"
+              style="background:none; border:none; cursor:pointer; font-size:14px; font-weight:600; color:#C7C3D6; padding:6px 12px; transition:color .2s;"
+              style-hover="color:#fff;">Contacto</button>
+          </nav>
+          <div style="font-size:13px; color:#8A85A0;">© {{ year }} Automate. Todos los derechos reservados.</div>
+        </div>
+      </footer>
+
+    </div>
+  </x-dc>
+  <script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { equipo: 8, horasSemana: 10, costoMensual: 1500, moneda: 'USD', submitted: false, activeTestimonial: 0, revealed: {} };
+
+  revealStyle(id, base) {
+    const shown = !!this.state.revealed[id];
+    return (shown ? 'opacity:1; transform:translateY(0);' : 'opacity:0; transform:translateY(18px);') + ' transition:opacity .7s ease, transform .7s ease; ' + base;
+  }
+
+  TESTIMONIALS = [
+    { name: 'María Gutiérrez', role: 'Gerente de Operaciones, Grupo Andino', initials: 'MG', avatarBg: '#EDEAFB', quote: 'Automate redujo en más de 60% el tiempo que dedicábamos a la conciliación manual de reportes. El equipo entendió nuestro negocio!.' },
+    { name: 'Jorge Salcedo', role: 'CFO, Textil Norte', initials: 'JS', avatarBg: '#F3EFFC', quote: 'La consultoría nos ayudó a ordenar procesos que llevaban años sin revisarse. Hoy tomamos decisiones con datos, no con suposiciones.' },
+    { name: 'Valeria Rojas', role: 'Directora Comercial, Fintech Plus', initials: 'VR', avatarBg: '#EDEAFB', quote: 'Los dashboards que implementaron nos dieron visibilidad total del embudo de ventas. La inversión se pagó sola en menos de tres meses.' },
+    { name: 'Renzo Palacios', role: 'Jefe de TI, Aseguradora Vital', initials: 'RP', avatarBg: '#F3EFFC', quote: 'Automatizaron un proceso que nos tomaba dos días a la semana. Ahora corre solo y nuestro equipo se dedica a análisis, no a tareas repetitivas.' },
+    { name: 'Camila Ibarra', role: 'Gerente General, Retail Sur', initials: 'CI', avatarBg: '#EDEAFB', quote: 'Profesionales, claros y muy rápidos para implementar. Automate se convirtió en un socio estratégico para nuestra área de datos.' },
+  ];
+
+  componentDidMount() {
+    // Reveal state lives in this.state (not direct DOM mutation) so it
+    // survives unrelated re-renders (e.g. the testimonial autoplay timer),
+    // which would otherwise reset the section's literal inline style back
+    // to its initial opacity:0 on every React re-render.
+    const markRevealed = (id) => {
+      if (this.state.revealed[id]) return;
+      this.setState((s) => ({ revealed: { ...s.revealed, [id]: true } }));
+    };
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          markRevealed(e.target.id);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('[data-reveal]').forEach((el) => obs.observe(el));
+
+    // Safety net: never leave content permanently invisible.
+    setTimeout(() => {
+      document.querySelectorAll('[data-reveal]').forEach((el) => markRevealed(el.id));
+    }, 4000);
+
+    const sizeSlots = () => {
+      document.querySelectorAll('#nosotros image-slot').forEach((el) => {
+        el.style.display = 'block';
+        el.style.width = '100%';
+        el.style.height = '100%';
+      });
+    };
+    sizeSlots();
+    setTimeout(sizeSlots, 300);
+    setTimeout(sizeSlots, 1200);
+
+    this._testimonialTimer = setInterval(() => {
+      this.setState((s) => ({ activeTestimonial: (s.activeTestimonial + 1) % this.TESTIMONIALS.length }));
+    }, 5500);
+  }
+
+  componentWillUnmount() {
+    if (this._testimonialTimer) clearInterval(this._testimonialTimer);
+  }
+
+  scrollTo(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const y = el.getBoundingClientRect().top + window.scrollY - 70;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+
+  seg(active) {
+    const base = 'cursor:pointer; font-size:14px; font-weight:700; padding:12px 10px; border-radius:11px; transition:all .2s; text-align:center;';
+    return active
+      ? base + ' background:#6D5BD0; color:#fff; border:1px solid #6D5BD0; box-shadow:0 6px 16px rgba(109,91,208,0.28);'
+      : base + ' background:#F7F6FB; color:#5B5870; border:1px solid #E8E6F2;';
+  }
+
+  renderVals() {
+    const { equipo, horasSemana, costoMensual, moneda } = this.state;
+    const RATE = 3.5; // PEN per USD
+    const symbol = moneda === 'PEN' ? 'S/' : '$';
+    const numFmt = (n) => Math.round(n).toLocaleString('en-US');
+    const cur = (n) => symbol + ' ' + numFmt(n);
+
+    // Rango del slider de costo según moneda (valores realistas)
+    const costoMin = moneda === 'PEN' ? 500 : 150;
+    const costoMax = moneda === 'PEN' ? 8000 : 2300;
+    const costoStep = moneda === 'PEN' ? 50 : 10;
+
+    const eq = parseInt(equipo, 10) || 0;
+    const hs = parseFloat(horasSemana) || 0;
+    const costoMes = parseFloat(costoMensual) || 0;
+
+    const STANDARD_MONTHLY_HOURS = 160; // horas laborales de referencia por FTE al mes
+    const costoPorHora = costoMes / STANDARD_MONTHLY_HOURS;
+
+    const horasPerdidasSemana = eq * hs;
+    const horasPerdidasAno = horasPerdidasSemana * 52;
+    const perdidaAno = horasPerdidasAno * costoPorHora;
+
+    const AHORRO_FACTOR = 0.7;
+    const ahorroAno = perdidaAno * AHORRO_FACTOR;
+    const horasRecuperadasMes = horasPerdidasSemana * 4.33 * AHORRO_FACTOR;
+    const empleadosEquivalentes = horasRecuperadasMes / STANDARD_MONTHLY_HOURS;
+    const empleadosEquivalentesText = empleadosEquivalentes >= 1
+      ? Math.round(empleadosEquivalentes * 10) / 10 + ' empleados extra'
+      : Math.round(empleadosEquivalentes * 100) + '% de un empleado extra';
+
+    return {
+      year: new Date().getFullYear(),
+      submitLabel: this.state.submitted ? '¡Mensaje enviado! ✓' : 'Enviar mensaje',
+
+      equipo,
+      horasSemana,
+      costoMensual,
+      costoMensualText: numFmt(costoMes),
+      costoMin,
+      costoMax,
+      costoStep,
+      costoMinText: numFmt(costoMin),
+      costoMaxText: numFmt(costoMax),
+      monedaSymbol: symbol,
+      monedaToggleLabel: moneda === 'PEN' ? 'Cambiar a USD' : 'Cambiar a PEN',
+
+      perdidaAnoText: cur(perdidaAno) + ' /año',
+      ahorroAnoText: cur(ahorroAno) + ' /año',
+      horasRecuperadasMesText: numFmt(horasRecuperadasMes),
+      empleadosEquivalentesText,
+
+      toggleMoneda: () => this.setState((s) => {
+        const c = parseFloat(s.costoMensual) || 0;
+        if (s.moneda === 'PEN') {
+          return { moneda: 'USD', costoMensual: Math.round(c / RATE) };
+        }
+        return { moneda: 'PEN', costoMensual: Math.round(c * RATE) };
+      }),
+
+      onEquipo: (e) => this.setState({ equipo: parseInt(e.target.value, 10) }),
+      onHorasSemana: (e) => this.setState({ horasSemana: parseInt(e.target.value, 10) }),
+      onCostoMensual: (e) => this.setState({ costoMensual: parseFloat(e.target.value) }),
+
+      revealVideo: this.revealStyle('video', 'max-width:1160px; margin:0 auto; padding:88px 28px 0;'),
+      revealServicios: this.revealStyle('servicios', 'max-width:1160px; margin:0 auto; padding:96px 28px;'),
+      revealCotizacion: this.revealStyle('cotizacion', 'background:#F7F6FB; border-top:1px solid #EFEDF6; border-bottom:1px solid #EFEDF6;'),
+      revealNosotros: this.revealStyle('nosotros', 'background:#F7F6FB; border-top:1px solid #EFEDF6; border-bottom:1px solid #EFEDF6;'),
+      revealClientes: this.revealStyle('clientes', 'max-width:1160px; margin:0 auto; padding:96px 28px;'),
+      revealContacto: this.revealStyle('contacto', 'max-width:1160px; margin:0 auto; padding:96px 28px;'),
+
+      testimonials: this.TESTIMONIALS.map((t, i) => ({
+        ...t,
+        wrapStyle: 'position:absolute; inset:52px 64px; padding-bottom:66px; opacity:' + (i === this.state.activeTestimonial ? '1' : '0') + '; transform:translateX(' + (i === this.state.activeTestimonial ? '0' : (i < this.state.activeTestimonial ? '-16px' : '16px')) + '); transition:opacity .5s ease, transform .5s ease; pointer-events:' + (i === this.state.activeTestimonial ? 'auto' : 'none') + ';',
+      })),
+      dots: this.TESTIMONIALS.map((_, i) => ({
+        onClick: () => this.setState({ activeTestimonial: i }),
+        style: 'width:' + (i === this.state.activeTestimonial ? '26px' : '9px') + '; height:9px; border-radius:999px; background:' + (i === this.state.activeTestimonial ? '#6D5BD0' : '#DDD8F0') + '; border:none; cursor:pointer; padding:0; transition:all .3s ease;',
+      })),
+      prevTestimonial: () => this.setState((s) => ({ activeTestimonial: (s.activeTestimonial - 1 + this.TESTIMONIALS.length) % this.TESTIMONIALS.length })),
+      nextTestimonial: () => this.setState((s) => ({ activeTestimonial: (s.activeTestimonial + 1) % this.TESTIMONIALS.length })),
+
+      goTop: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
+      goServicios: () => this.scrollTo('servicios'),
+      goCotizacion: () => this.scrollTo('cotizacion'),
+      goNosotros: () => this.scrollTo('nosotros'),
+      goClientes: () => this.scrollTo('clientes'),
+      goContacto: () => this.scrollTo('contacto'),
+
+      onSubmit: (e) => {
+        e.preventDefault();
+        this.setState({ submitted: true });
+        setTimeout(() => this.setState({ submitted: false }), 3500);
+      },
+    };
+  }
+}
+</script>
+</body>
+
+</html>

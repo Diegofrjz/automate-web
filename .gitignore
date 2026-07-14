@@ -1,0 +1,11 @@
+# Archivos de estado del editor Claude Design
+.image-slots.state.json
+.thumbnail
+screenshots/
+
+# Claude Code
+.claude/
+
+# Sistema
+Thumbs.db
+.DS_Store

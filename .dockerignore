@@ -1,0 +1,9 @@
+# Archivos del editor Claude Design — no deben servirse
+.image-slots.state.json
+.thumbnail
+screenshots/
+image-slot.js
+Dockerfile
+.dockerignore
+.gitignore
+.git
