@@ -4,6 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Automate | Automatización e Inteligencia de Negocio</title>
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="192x192" href="./favicon-192.png">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
   <script src="./support.js"></script>
 </head>
 
@@ -123,6 +127,15 @@
 
           .au-contact {
             grid-template-columns: 1fr !important;
+          }
+
+          .au-contact > a,
+          .au-contact > div {
+            padding: 20px !important;
+          }
+
+          .au-email {
+            font-size: 15px !important;
           }
 
           .au-hero-logo {
@@ -541,73 +554,68 @@
             inmediato.</p>
         </div>
 
-        <div class="au-contact" style="display:grid; grid-template-columns:1.4fr 1fr; gap:40px; align-items:start;">
-          <!-- Form -->
-          <form onSubmit="{{ onSubmit }}"
-            style="background:#fff; border:1px solid #ECEAF5; border-radius:20px; padding:36px;">
-            <div style="display:flex; flex-direction:column; gap:18px;">
-              <div>
-                <label style="display:block; font-size:14px; font-weight:700; margin-bottom:8px;">Nombre</label>
-                <input type="text" required="" placeholder="Tu nombre"
-                  style="width:100%; padding:13px 15px; border:1px solid #E3DFF0; border-radius:10px; font-size:15px; color:#1A1726; background:#FCFBFE; transition:border-color .2s, box-shadow .2s;">
+        <div class="au-contact" style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:stretch;">
+          <!-- Email -->
+          <a href="mailto:automateperu@outlook.com"
+            style="display:block; text-decoration:none; color:inherit; background:#F7F6FB; border:1px solid #ECEAF5; border-radius:16px; padding:24px; transition:transform .25s, box-shadow .25s, border-color .25s;"
+            style-hover="transform:translateY(-3px); box-shadow:0 14px 32px rgba(26,23,38,0.07); border-color:#DfD9F1;">
+            <div style="display:flex; align-items:center; gap:14px;">
+              <div
+                style="width:46px; height:46px; border-radius:12px; background:#EDEAFB; display:flex; align-items:center; justify-content:center; flex:none;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6D5BD0" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                  <polyline points="3 7 12 13 21 7"></polyline>
+                </svg>
               </div>
-              <div>
-                <label style="display:block; font-size:14px; font-weight:700; margin-bottom:8px;">Email</label>
-                <input type="email" required="" placeholder="tu@empresa.com"
-                  style="width:100%; padding:13px 15px; border:1px solid #E3DFF0; border-radius:10px; font-size:15px; color:#1A1726; background:#FCFBFE; transition:border-color .2s, box-shadow .2s;">
+              <div style="min-width:0;">
+                <div style="font-size:13px; color:#9A96AD; font-weight:600;">Email</div>
+                <div class="au-email" style="font-size:16px; font-weight:700; color:#1A1726; overflow-wrap:break-word;">automateperu@<wbr>outlook.com</div>
               </div>
-              <div>
-                <label style="display:block; font-size:14px; font-weight:700; margin-bottom:8px;">Mensaje</label>
-                <textarea required="" rows="4" placeholder="Cuéntanos sobre tu proyecto..."
-                  style="width:100%; padding:13px 15px; border:1px solid #E3DFF0; border-radius:10px; font-size:15px; color:#1A1726; background:#FCFBFE; resize:vertical; transition:border-color .2s, box-shadow .2s;"></textarea>
-              </div>
-              <button type="submit"
-                style="background:#6D5BD0; border:none; cursor:pointer; font-size:16px; font-weight:700; color:#fff; padding:15px; border-radius:10px; transition:background .2s, transform .2s;"
-                style-hover="background:#5B49BE; transform:translateY(-2px);">{{ submitLabel }}</button>
             </div>
-          </form>
+          </a>
 
-          <!-- Contact info -->
-          <div style="display:flex; flex-direction:column; gap:18px;">
-            <div style="background:#F7F6FB; border:1px solid #ECEAF5; border-radius:16px; padding:24px;">
-              <div style="display:flex; align-items:center; gap:14px;">
-                <div
-                  style="width:46px; height:46px; border-radius:12px; background:#EDEAFB; display:flex; align-items:center; justify-content:center; flex:none;">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6D5BD0" stroke-width="1.8"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-                    <polyline points="3 7 12 13 21 7"></polyline>
-                  </svg>
-                </div>
-                <div>
-                  <div style="font-size:13px; color:#9A96AD; font-weight:600;">Email</div>
-                  <div style="font-size:16px; font-weight:700; color:#1A1726;">automateperu@gmail.com</div>
-                </div>
+          <!-- WhatsApp -->
+          <a href="{{ whatsappUrl }}" target="_blank" rel="noopener noreferrer"
+            style="display:block; text-decoration:none; color:inherit; background:#F7F6FB; border:1px solid #ECEAF5; border-radius:16px; padding:24px; transition:transform .25s, box-shadow .25s, border-color .25s;"
+            style-hover="transform:translateY(-3px); box-shadow:0 14px 32px rgba(26,23,38,0.07); border-color:#DfD9F1;">
+            <div style="display:flex; align-items:center; gap:14px;">
+              <div
+                style="width:46px; height:46px; border-radius:12px; background:#EDEAFB; display:flex; align-items:center; justify-content:center; flex:none;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6D5BD0" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M21 11.5a8.38 8.38 0 0 1-9 8.4 9 9 0 0 1-4-1L3 20l1.1-4.9a8.5 8.5 0 0 1-1-4A8.38 8.38 0 0 1 11.5 3 8.5 8.5 0 0 1 21 11.5z">
+                  </path>
+                </svg>
+              </div>
+              <div style="min-width:0;">
+                <div style="font-size:13px; color:#9A96AD; font-weight:600;">WhatsApp</div>
+                <div style="font-size:16px; font-weight:700; color:#1A1726;">+51 904 786 070</div>
               </div>
             </div>
-            <div style="background:#F7F6FB; border:1px solid #ECEAF5; border-radius:16px; padding:24px;">
-              <div style="display:flex; align-items:center; gap:14px;">
-                <div
-                  style="width:46px; height:46px; border-radius:12px; background:#EDEAFB; display:flex; align-items:center; justify-content:center; flex:none;">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6D5BD0" stroke-width="1.8"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path
-                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z">
-                    </path>
-                  </svg>
-                </div>
-                <div>
-                  <div style="font-size:13px; color:#9A96AD; font-weight:600;">WhatsApp</div>
-                  <div style="font-size:16px; font-weight:700; color:#1A1726;">+51 904 786 070</div>
-                </div>
-              </div>
-            </div>
-            <div
-              style="background:linear-gradient(160deg,#1A1726 0%,#2D2747 100%); border-radius:16px; padding:24px; color:#fff;">
-              <div style="font-size:15px; font-weight:700; margin-bottom:6px;">Horario de atención</div>
-              <div style="font-size:14px; opacity:0.8; line-height:1.6;">Lunes a viernes<br>9:00 — 18:00 (GMT-5)</div>
-            </div>
+          </a>
+
+          <!-- Horario -->
+          <div
+            style="background:linear-gradient(160deg,#1A1726 0%,#2D2747 100%); border-radius:16px; padding:24px; color:#fff;">
+            <div style="font-size:15px; font-weight:700; margin-bottom:6px;">Horario de atención</div>
+            <div style="font-size:14px; opacity:0.8; line-height:1.6;">Lunes a viernes<br>9:00 — 18:00 (GMT-5)</div>
           </div>
+        </div>
+
+        <div style="display:flex; justify-content:center; margin-top:36px;">
+          <a href="{{ whatsappUrl }}" target="_blank" rel="noopener noreferrer"
+            style="display:inline-flex; align-items:center; gap:10px; text-decoration:none; background:#6D5BD0; font-size:16px; font-weight:700; color:#fff; padding:15px 30px; border-radius:10px; box-shadow:0 8px 24px rgba(109,91,208,0.28); transition:transform .2s, box-shadow .2s, background .2s;"
+            style-hover="background:#5B49BE; transform:translateY(-2px); box-shadow:0 12px 30px rgba(109,91,208,0.34);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M21 11.5a8.38 8.38 0 0 1-9 8.4 9 9 0 0 1-4-1L3 20l1.1-4.9a8.5 8.5 0 0 1-1-4A8.38 8.38 0 0 1 11.5 3 8.5 8.5 0 0 1 21 11.5z">
+              </path>
+            </svg>
+            Escríbenos por WhatsApp
+          </a>
         </div>
       </section>
 
@@ -645,7 +653,7 @@
   </x-dc>
   <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { equipo: 8, horasSemana: 10, costoMensual: 1500, moneda: 'USD', submitted: false, activeTestimonial: 0, revealed: {} };
+  state = { equipo: 5, horasSemana: 8, costoMensual: 1500, moneda: 'PEN', activeTestimonial: 0, revealed: {} };
 
   revealStyle(id, base) {
     const shown = !!this.state.revealed[id];
@@ -751,7 +759,8 @@ class Component extends DCLogic {
 
     return {
       year: new Date().getFullYear(),
-      submitLabel: this.state.submitted ? '¡Mensaje enviado! ✓' : 'Enviar mensaje',
+      // wa.me abre la app en iOS/Android y WhatsApp Web/Desktop en computadora
+      whatsappUrl: 'https://wa.me/51904786070?text=' + encodeURIComponent('Hola Automate, vengo de su web y quiero conversar sobre un proyecto.'),
 
       equipo,
       horasSemana,
@@ -806,12 +815,6 @@ class Component extends DCLogic {
       goNosotros: () => this.scrollTo('nosotros'),
       goClientes: () => this.scrollTo('clientes'),
       goContacto: () => this.scrollTo('contacto'),
-
-      onSubmit: (e) => {
-        e.preventDefault();
-        this.setState({ submitted: true });
-        setTimeout(() => this.setState({ submitted: false }), 3500);
-      },
     };
   }
 }
